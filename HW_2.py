@@ -1,32 +1,33 @@
-result = 0
+total_sum = 0
 
-def sum_func(d,e,result):
-    result += e[d]
-    if d == 0:
-        print(result)
-        return result
-    sum_func(d-1,e,result)
+def calculate_sum(index, numbers, total_sum):
+    total_sum += numbers[index]
+    if index == 0:
+        print('The sum of the input integers is ==> ', total_sum)
+        return total_sum
+    calculate_sum(index - 1, numbers, total_sum)
 
 while True:
-    b = []
-    a = input("Enter integers separated by spaces ==> ")
+    numbers_list = []
+    user_input = input("Enter integers separated by spaces ==> ")
 
-    if a == 'done':
-        print('program terminated. good bye !!')
+    if user_input == 'done':
+        print('Program terminated. Goodbye!')
         break
     else:
-        a = a.split(' ')
+        user_input_split = user_input.split(' ')
 
     try:
-        for i in a:
-            b.append(int(i))
+        for num_str in user_input_split:
+            numbers_list.append(int(num_str))
     except ValueError:
-        print('must enter integers separated by spaces')
+        print('Must enter integers separated by spaces')
         continue
 
-    if len(b) == 1:
-        print("must enter more than one integer")
+    if len(numbers_list) == 1:
+        print("Must enter more than one integer")
         continue
 
-    sum_func(len(b)-1, b, result)
+    calculate_sum(len(numbers_list) - 1, numbers_list, total_sum)
     break
+    
