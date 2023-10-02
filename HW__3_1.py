@@ -2,17 +2,19 @@ from tkinter import *
 win = Tk()
 win.title("애완동물 선택하기")
 
-dogpt = PhotoImage(file="C:/Users/user/OneDrive - 우송대학교(WOOSONG UNIVERSITY)/PyFiles/ref_data/exjpeg/dog.gif")
-catpt = PhotoImage(file="C:/Users/user/OneDrive - 우송대학교(WOOSONG UNIVERSITY)/PyFiles/ref_data/exjpeg/cat.gif")
-rabpt = PhotoImage(file="C:/Users/user/OneDrive - 우송대학교(WOOSONG UNIVERSITY)/PyFiles/ref_data/exjpeg/rabbit.gif")
+dogpt = PhotoImage(file="C:/Users/Hanbit/OneDrive - 우송대학교(WOOSONG UNIVERSITY)/PyFiles/ref_data/exjpeg/dog.gif")
+catpt = PhotoImage(file="C:/Users/Hanbit/OneDrive - 우송대학교(WOOSONG UNIVERSITY)/PyFiles/ref_data/exjpeg/cat.gif")
+rabpt = PhotoImage(file="C:/Users/Hanbit/OneDrive - 우송대학교(WOOSONG UNIVERSITY)/PyFiles/ref_data/exjpeg/rabbit.gif")
 
 def showpict():
     if chk.get() ==1:
         ptlabel.configure(image=dogpt)
     elif chk.get() == 2:
         ptlabel.configure(image=catpt)
-    else:
+    elif chk.get() == 3:
         ptlabel.configure(image=rabpt)
+    else:
+        ptlabel.configure(text= "동물을 선택하세요")
 
 Title = Label(win, text="좋아하는 동물 투표", fg="blue", bg=None, font=("궁서체", 30))
 chk = IntVar()
