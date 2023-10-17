@@ -2,7 +2,7 @@ import sqlite3
 from tkinter import *
 from tkinter import messagebox as ms
 
-con = sqlite3.connect("C:/Users/scott/OneDrive - 우송대학교(WOOSONG UNIVERSITY)/,/a/md202310603")
+con = sqlite3.connect("C:/Users/Hanbit/OneDrive - 우송대학교(WOOSONG UNIVERSITY)/,/a/md202310603")
 cur = con.cursor()
 cur.execute("DROP TABLE IF EXISTS userData")
 cur.execute("CREATE TABLE userData(id char(15), name char(20), email char(30), birthYear int)")
@@ -12,8 +12,19 @@ def ent_func():
     name = name_entry.get()
     email = email_entry.get()
     birth = birth_entry.get()
+    cur.execute("SELECT * FROM userData")
+    a = 1
     try:
-        cur.execute(f"INSERT INTO userData VALUES('{id}','{name}','{email}', {birth})")
+        while True:
+            row = cur.fetchone()
+            if row == None:
+                break
+            if id == row[0] or name == row [1] or email == row[2] or birth == row[3]:
+                ms.showerror("오류", "중복된 데이터")
+                a = 0
+                break
+        if a == 1:
+            cur.execute(f"INSERT INTO userData VALUES('{id}','{name}','{email}', {birth})")
     except:
         ms.showerror("오류", "데이터 입력 오류가 발생함")
     birth_entry.delete(0,END);email_entry.delete(0,END);id_entry.delete(0,END);name_entry.delete(0,END)
