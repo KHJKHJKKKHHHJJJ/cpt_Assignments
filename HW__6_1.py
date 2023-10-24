@@ -1,11 +1,11 @@
 pricelist = []
 while len(pricelist)<5:
     try:
-        a = int(input("input a price of the menu: "))
+        a = int(input(f"Enter a price of the menu No.{len(pricelist) + 1}: "))
         if a < 100 or a > 2000:
             raise ValueError
     except:
-        print("Enter the right values. Enter ")
+        print("Enter the right values.")
         continue
     pricelist.append(a)
 
