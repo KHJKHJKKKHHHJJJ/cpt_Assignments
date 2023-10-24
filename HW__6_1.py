@@ -5,7 +5,7 @@ while len(pricelist)<5:
         if a < 100 or a > 2000:
             raise ValueError
     except:
-        print("Enter the right values.")
+        print("Enter the right value of price.")
         continue
     pricelist.append(a)
 
